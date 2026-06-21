@@ -306,7 +306,10 @@ BASE_URL = "https://e14segundavueltapresidente.registraduria.gov.co"
 | Solo descargó 12 mesas | Ejecuta de nuevo, la paginación se ajusta automáticamente |
 | El script se detuvo a la mitad | Vuelve a ejecutar. Los archivos existentes no se sobreescriben |
 | reCAPTCHA bloqueó la descarga | No uses `--headless`. Espera unos minutos |
+| No encontró municipios (0 municipios) | El sitio necesita más tiempo para cargar los dropdowns. Ejecuta de nuevo — la segunda vez funciona |
 | `playwright not found` | `pip install playwright && playwright install chromium` |
+
+> **Nota:** El sitio de segunda vuelta tiene la misma estructura que el de primera vuelta. Si al ejecutar muestra "0 municipios", simplemente vuelve a lanzar el comando — los dropdowns necesitan unos segundos extra para cargar los datos.
 
 ---
 
