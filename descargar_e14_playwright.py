@@ -211,6 +211,7 @@ class E14PlaywrightScraper:
         """Navega a un departamento."""
         await self.page.goto(url, timeout=90000)
         await self.esperar_carga(timeout=45000)
+        await asyncio.sleep(2)  # Espera extra para que carguen los dropdowns
 
     async def abrir_dropdown_y_listar(self, placeholder):
         """Abre un dropdown por placeholder y retorna las opciones."""

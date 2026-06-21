@@ -344,6 +344,8 @@ python descargar_e14_playwright.py --departamento 01 --municipio PENOL
 - [ ] Soporte para Senado, Cámara, alcaldías
 - [ ] Paralelizar descargas con múltiples navegadores
 
+**Busco personas interesadas en aportar con OCR, análisis estadístico, dashboards y mejoras al modelo de detección.** Escríbeme a contacto@cencomer.com.
+
 ---
 
 ## Licencia
