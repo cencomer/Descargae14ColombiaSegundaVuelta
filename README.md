@@ -350,6 +350,12 @@ python descargar_e14_playwright.py --departamento 01 --municipio PENOL
 
 MIT
 
+## Autor
+
+**Luis Cabezas**  
+Estudiante UdeA — Diplomado en Inteligencia Artificial, MinTIC  
+contacto@cencomer.com
+
 ## Disclaimer
 
 Esta herramienta es para fines de auditoría ciudadana y transparencia electoral. Los resultados del análisis automático son indicativos y requieren verificación humana. No constituyen prueba de fraude por sí solos.
