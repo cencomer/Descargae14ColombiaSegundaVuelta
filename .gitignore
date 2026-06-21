@@ -1,0 +1,19 @@
+# Descargas (no subir PDFs al repo)
+e14_descargas/
+
+# Logs
+*.log
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+Thumbs.db
+.DS_Store
