@@ -1,6 +1,6 @@
 # E14 Colombia — Auditoría Electoral Automatizada
 
-Herramienta open source para descargar y analizar los formularios E14 de la Registraduría Nacional de Colombia, con detección automática de números sobreescritos o alterados.
+Herramienta open source para descargar los formularios E14 de la Registraduría Nacional de Colombia, organizados por municipio, zona y puesto de votación.
 
 ## ¿Qué es un E14?
 
@@ -9,8 +9,8 @@ El formulario E14 es el **Acta de Escrutinio de los Jurados de Votación** — e
 ## ¿Qué hace esta herramienta?
 
 1. **Descarga masiva** de formularios E14 desde el sitio de divulgación de la Registraduría
-2. **Detección automática** de números sobreescritos o alterados en las celdas de votación
-3. **Generación de informes** con la ubicación exacta de cada mesa sospechosa
+2. **Organización automática** por municipio, zona y puesto de votación
+3. **Generación de informes** con el resumen de zonas, puestos y mesas descargadas
 
 ---
 
@@ -18,7 +18,6 @@ El formulario E14 es el **Acta de Escrutinio de los Jurados de Votación** — e
 
 ### Requisitos
 - Python 3.10+
-- Google Chrome instalado
 - Conexión a internet estable
 - 500 MB de espacio libre (mínimo por municipio)
 
@@ -36,12 +35,8 @@ cd e14-colombia
 # 3. Instalar dependencias
 pip install -r requirements.txt
 
-# 4. Instalar navegador Chromium
+# 4. Instalar navegador Chromium (se descarga automáticamente)
 playwright install chromium
-
-# 5. Instalar Poppler (necesario para analizar PDFs)
-winget install oschwartz10612.Poppler
-# Reiniciar la terminal después de instalar Poppler
 ```
 
 ### Linux (Ubuntu/Debian)
@@ -49,7 +44,7 @@ winget install oschwartz10612.Poppler
 ```bash
 # 1. Instalar Python y dependencias del sistema
 sudo apt update
-sudo apt install python3 python3-pip git poppler-utils
+sudo apt install python3 python3-pip git
 
 # 2. Instalar dependencias de Playwright para Linux
 sudo apt install libglib2.0-0 libnss3 libnspr4 libdbus-1-3 libatk1.0-0 \
@@ -72,7 +67,7 @@ playwright install chromium
 
 ```bash
 # 1. Instalar Python y dependencias
-sudo dnf install python3 python3-pip git poppler-utils
+sudo dnf install python3 python3-pip git
 
 # 2. Clonar e instalar
 git clone https://github.com/tu-usuario/e14-colombia.git
@@ -88,8 +83,8 @@ playwright install chromium
 # 1. Instalar Homebrew (si no lo tienes)
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-# 2. Instalar Python y Poppler
-brew install python poppler
+# 2. Instalar Python
+brew install python
 
 # 3. Clonar e instalar
 git clone https://github.com/tu-usuario/e14-colombia.git
@@ -244,9 +239,19 @@ Errores:      0
 
 ---
 
-## Analizar alteraciones (experimental)
+## Analizar alteraciones (en desarrollo)
+
+> ⚠️ **Esta funcionalidad está en desarrollo.** Las coordenadas de las celdas requieren calibración y puede generar falsos positivos. Se incluye como punto de partida para contribuciones.
 
 Detecta números sobreescritos en las celdas de votación usando Computer Vision.
+
+**Dependencias adicionales:**
+```bash
+pip install pdf2image opencv-python numpy
+# Windows: winget install oschwartz10612.Poppler
+# Linux: sudo apt install poppler-utils
+# macOS: brew install poppler
+```
 
 ```bash
 # Analizar todos los PDFs descargados
@@ -260,8 +265,6 @@ python analizar_tachones.py --umbral 0.5
 ```
 
 Los PDFs sospechosos se copian a `e14_descargas/sospechosos/` con un informe detallado.
-
-⚠️ **Estado:** Las coordenadas de las celdas requieren calibración por tipo de elección. Puede generar falsos positivos.
 
 ---
 
