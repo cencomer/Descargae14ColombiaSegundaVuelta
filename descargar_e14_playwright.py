@@ -265,11 +265,10 @@ class E14PlaywrightScraper:
                     await asyncio.sleep(1.5)
                     return True
 
-            # Si no encontró, clic en el primero
-            if count > 0:
-                await items.first.click()
-                await asyncio.sleep(1.5)
-                return True
+            # No encontró coincidencia, cerrar dropdown
+            await self.page.keyboard.press("Escape")
+            await asyncio.sleep(0.5)
+            return False
 
         except Exception as e:
             logger.debug(f"  Error seleccionando '{valor}': {e}")
